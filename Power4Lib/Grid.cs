@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Power4Lib
 {
+    [Serializable]
     public class Grid
     {
         private readonly Pawn[,] pawns = new Pawn[Width, Height];
@@ -39,7 +40,7 @@ namespace Power4Lib
             return true;
         }
 
-        internal void LayCircle(Pawn pawn, int location)
+        public void LayCircle(Pawn pawn, int location)
         {
             for (int i = 0; i <= Height; i++)
             {

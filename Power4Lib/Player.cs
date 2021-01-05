@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Power4Lib
 {
+    [Serializable]
     public class Player : IEquatable<Player>
     {
         public int Id { get; set; }

@@ -77,7 +77,7 @@ namespace Puissance_4
                 bool parsed = false;
                 do
                 {
-                    DrawGrid();
+                    ConsoleGridDrawer.DrawGrid(game.Grid);
                     Console.Write("Tour du joueur {0}", player.Name);
                     Console.ForegroundColor = player.Pawn.Color;
                     Console.Write(" (pion {0})", player.Pawn.Char);
@@ -128,7 +128,7 @@ namespace Puissance_4
                     Console.ForegroundColor = ConsoleColor.White;
                 }
 
-                DrawGrid();
+                ConsoleGridDrawer.DrawGrid(game.Grid);
                 Console.WriteLine("\n...");
                 Console.ReadKey();
                 string answer;
@@ -140,62 +140,6 @@ namespace Puissance_4
                 while (answer.ToUpper() != "O" && answer.ToUpper() != "N" && !string.IsNullOrEmpty(answer));
                 playAgain = answer.ToUpper() != "N";
                 Console.Clear();
-            }
-
-
-            void DrawGrid()
-            {
-                Console.ForegroundColor = ConsoleColor.DarkGray;
-                Console.Write("  ");
-                for (int columnNumber = 0; columnNumber < Grid.Width; columnNumber++)
-                    Console.Write((columnNumber + 1).ToString().Length > 1 ? (columnNumber + 1) + " " : (columnNumber + 1) + "  ");
-                Console.ForegroundColor = ConsoleColor.White;
-                Console.WriteLine();
-
-                Console.ForegroundColor = ConsoleColor.Blue;
-                Console.Write("__");
-                for (int i = 0; i < Grid.Width; i++)
-                    Console.Write(" __");
-
-                Console.WriteLine();
-
-                for (int y = Grid.Height - 1; y >= 0; y--)
-                {
-                    Console.Write('|');
-                    for (int x = 0; x < Grid.Width; x++)
-                    {
-                        if (game.Grid[x, y] != null)
-                        {
-                            if (game.Grid[x, y].Winning)
-                                Console.ForegroundColor = ConsoleColor.Green;
-                            else
-                                Console.ForegroundColor = game.Grid[x, y].Color;
-
-                            Console.Write(" " + game.Grid[x, y].ToString() + " ");
-                        }
-                        else
-                            Console.Write(" . ");
-
-                        Console.ForegroundColor = ConsoleColor.Blue;
-                    }
-                    Console.Write('|');
-                    Console.WriteLine();
-                }
-
-                Console.Write('|');
-                for (int i = 1; i < (Grid.Width * 3) + 2 - 1; i++)
-                    Console.Write(i % 2 == 0 ? "=" : "-");
-
-                Console.Write("|\n| ");
-
-                Console.ForegroundColor = ConsoleColor.DarkGray;
-                for (int columnNumber = 0; columnNumber < Grid.Width; columnNumber++)
-                    Console.Write(columnNumber == Grid.Width - 1 ? ((columnNumber + 1).ToString().Length > 1 ? columnNumber + 1 + "" : (columnNumber + 1) + " ") : ((columnNumber + 1).ToString().Length > 1 ? (columnNumber + 1) + " " : (columnNumber + 1) + "  "));
-
-                Console.ForegroundColor = ConsoleColor.Blue;
-                Console.WriteLine("|\n");
-
-                Console.ForegroundColor = ConsoleColor.White;
             }
         }
     }

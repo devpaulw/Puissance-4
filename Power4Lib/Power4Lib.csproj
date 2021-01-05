@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ConsoleGridDrawer.cs" />
     <Compile Include="Exceptions.cs" />
     <Compile Include="Power4Game.cs" />
     <Compile Include="Grid.cs" />

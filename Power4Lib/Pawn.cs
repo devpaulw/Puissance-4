@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Power4Lib
 {
+    [Serializable]
     public class Pawn : ICloneable, IEquatable<Pawn>
     {
         public char Char { get; set; }
